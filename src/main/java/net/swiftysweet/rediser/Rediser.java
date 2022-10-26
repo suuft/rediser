@@ -8,9 +8,9 @@ import net.swiftysweet.rediser.util.JedisUtil;
 import net.swiftysweet.rediser.util.JsonUtil;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @UtilityClass
 public class Rediser {
@@ -49,6 +49,27 @@ public class Rediser {
             return JsonUtil.from(json, instanceClass);
         }
         return null;
+
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> Collection<T> getAll(Class<T> instanceClass) {
+        if (!REDIS_REGISTERED_MAP.containsKey(instanceClass.getName())) return new ArrayList<>();
+        Collection<String> jsonCollection = JedisUtil.getAll(REDIS_REGISTERED_MAP.get(instanceClass.getName())).values();
+
+        Collection<T> collection = new ArrayList<>();
+        for (String json : jsonCollection) {
+            if (json != null) {
+                collection.add(JsonUtil.from(json, instanceClass));
+            }
+        }
+
+        return collection;
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> Collection<T> getAllByFilter(Class<T> instanceClass, Predicate<T> filter) {
+        return getAll(instanceClass).stream().filter(filter).collect(Collectors.toList());
     }
 
     public void remove(Class<? extends RObject> instanceClass, Object key) {

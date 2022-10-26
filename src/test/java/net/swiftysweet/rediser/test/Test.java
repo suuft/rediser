@@ -1,5 +1,6 @@
 package net.swiftysweet.rediser.test;
 
+
 import net.swiftysweet.rediser.Rediser;
 
 public class Test {
@@ -25,8 +26,6 @@ public class Test {
 
         // and save
         user.push();
-
-        System.out.println("user name - " + user.getName() + ", age - " + user.getAge());
     }
 
 //    private static void test() {

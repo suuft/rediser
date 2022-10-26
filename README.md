@@ -74,4 +74,4 @@ Now we can receive and send users to Redis. We get the objects through the `net.
 ```
 ---
 
-If you have any ideas, or you have found problems, write to me or make a pull requests
+If you have any ideas, or you have found problems, write to me or make a pull requests.

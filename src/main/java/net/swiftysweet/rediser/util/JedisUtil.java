@@ -5,6 +5,8 @@ import lombok.experimental.UtilityClass;
 import net.swiftysweet.rediser.annotation.Redis;
 import redis.clients.jedis.Jedis;
 
+import java.util.Map;
+
 @UtilityClass
 public class JedisUtil {
 
@@ -31,6 +33,12 @@ public class JedisUtil {
     public void remove(@NonNull Redis redis, @NonNull String field) {
         try (Jedis jedis = createJedis(redis)) {
             jedis.hdel(redis.name(), field);
+        }
+    }
+
+    public Map<String, String> getAll(@NonNull Redis redis) {
+        try (Jedis jedis = createJedis(redis)) {
+            return jedis.hgetAll(redis.name());
         }
     }
 }
