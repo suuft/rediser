@@ -1,7 +1,5 @@
 ## Rediser
 
----
-
 Redis is able to process requests as quickly as possible, save information when disconnected, and much more. This framework is intended for those people who use redis as the main data storage.
 
 ### `Project To-Do:`
