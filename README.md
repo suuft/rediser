@@ -13,14 +13,6 @@ Redis is able to process requests as quickly as possible, save information when 
 ### `Usage examples:`
 First, let's create a class whose objects we will store in Redis. The class must implementation from `net.rediser.RObject`, have an annotation `@Redis` and a field with an annotation `@KeyField`. Example of correct use:
 ```java
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import net.rediser.RObject;
-import annotation.net.rediser.PrimaryField;
-import annotation.net.rediser.Redis;
-
 @Getter // not necessary
 @Setter // not necessary
 @AllArgsConstructor // not necessary
