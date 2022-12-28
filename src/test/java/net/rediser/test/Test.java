@@ -1,7 +1,7 @@
-package net.swiftysweet.rediser.test;
+package net.rediser.test;
 
 
-import net.swiftysweet.rediser.Rediser;
+import net.rediser.Rediser;
 
 public class Test {
 

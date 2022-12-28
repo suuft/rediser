@@ -1,4 +1,4 @@
-package net.swiftysweet.rediser;
+package net.rediser;
 
 import java.util.concurrent.CompletableFuture;
 

@@ -1,11 +1,11 @@
-package net.swiftysweet.rediser;
+package net.rediser;
 
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
-import net.swiftysweet.rediser.annotation.KeyField;
-import net.swiftysweet.rediser.annotation.Redis;
-import net.swiftysweet.rediser.util.JedisUtil;
-import net.swiftysweet.rediser.util.JsonUtil;
+import net.rediser.annotation.PrimaryField;
+import net.rediser.util.JedisUtil;
+import net.rediser.util.JsonUtil;
+import net.rediser.annotation.Redis;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -28,7 +28,7 @@ public class Rediser {
 
             Arrays.stream(objectClass.getDeclaredFields()).forEach(f -> {
 
-                KeyField annotation = f.getAnnotation(KeyField.class);
+                PrimaryField annotation = f.getAnnotation(PrimaryField.class);
                 if (annotation != null) {
                     KEY_REGISTERED_MAP.put(className, f.getName());
                 }

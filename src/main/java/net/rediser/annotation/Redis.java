@@ -1,4 +1,4 @@
-package net.swiftysweet.rediser.annotation;
+package net.rediser.annotation;
 
 
 import java.lang.annotation.ElementType;

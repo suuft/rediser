@@ -1,4 +1,4 @@
-package net.swiftysweet.rediser.util;
+package net.rediser.util;
 
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;

@@ -1,7 +1,7 @@
 ## Rediser
 
 ---
-
+WARN : BAD CODE! NEED REFACTORING!
 Redis is able to process requests as quickly as possible, save information when disconnected, and much more. This framework is intended for those people who use redis as the main data storage.
 
 ### `Project To-Do:`
@@ -11,15 +11,15 @@ Redis is able to process requests as quickly as possible, save information when 
 * Make instructions for the correct use of Redis.
 ---
 ### `Usage examples:`
-First, let's create a class whose objects we will store in Redis. The class must implementation from `net.swiftysweet.rediser.RObject`, have an annotation `@Redis` and a field with an annotation `@KeyField`. Example of correct use:
+First, let's create a class whose objects we will store in Redis. The class must implementation from `net.rediser.RObject`, have an annotation `@Redis` and a field with an annotation `@KeyField`. Example of correct use:
 ```java
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.swiftysweet.rediser.RObject;
-import net.swiftysweet.rediser.annotation.KeyField;
-import net.swiftysweet.rediser.annotation.Redis;
+import net.rediser.RObject;
+import annotation.net.rediser.PrimaryField;
+import annotation.net.rediser.Redis;
 
 @Getter // not necessary
 @Setter // not necessary
@@ -52,7 +52,7 @@ It's simple! When running your code, you first need to register your class:
 ```java
 Rediser.registerClass(User.class);
 ```
-Now we can receive and send users to Redis. We get the objects through the `net.swiftysweet.rediser.Rediser` class. Please remember that if there is no object in redis, redis will return null. Example:
+Now we can receive and send users to Redis. We get the objects through the `net.rediser.Rediser` class. Please remember that if there is no object in redis, redis will return null. Example:
 ```java
         // get user by specifying class whose object need
         // and the key that we use in the class

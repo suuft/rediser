@@ -1,12 +1,12 @@
-package net.swiftysweet.rediser.test;
+package net.rediser.test;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.swiftysweet.rediser.RObject;
-import net.swiftysweet.rediser.annotation.KeyField;
-import net.swiftysweet.rediser.annotation.Redis;
+import net.rediser.RObject;
+import net.rediser.annotation.PrimaryField;
+import net.rediser.annotation.Redis;
 
 @Getter // not necessary
 @Setter // not necessary
@@ -16,7 +16,8 @@ import net.swiftysweet.rediser.annotation.Redis;
 public class User implements RObject {
 
     // @KeyField indicates the field that will be the key in the redis.
-    @KeyField long identifier;
+    @PrimaryField
+    long identifier;
 
     String name;
     String lastName;

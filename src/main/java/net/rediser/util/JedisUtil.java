@@ -1,21 +1,29 @@
-package net.swiftysweet.rediser.util;
+package net.rediser.util;
 
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
-import net.swiftysweet.rediser.annotation.Redis;
+import net.rediser.annotation.Redis;
 import redis.clients.jedis.Jedis;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @UtilityClass
 public class JedisUtil {
 
+    private Map<Redis, Jedis> redisJedisMap = new HashMap<>();
+
     public Jedis createJedis(@NonNull Redis redis) {
-        Jedis jedis = new Jedis(redis.hostName(), redis.port());
-        if (!redis.password().equals("unspecified")) {
-            jedis.auth(redis.password());
+        if (!redisJedisMap.containsKey(redis)) {
+            Jedis jedis = new Jedis(redis.hostName(), redis.port());
+            if (!redis.password().equals("unspecified")) {
+                jedis.auth(redis.password());
+            }
+            redisJedisMap.put(redis, jedis);
+            return jedis;
+        } else {
+            return redisJedisMap.get(redis);
         }
-        return jedis;
     }
 
     public void set(@NonNull Redis redis, @NonNull String field, @NonNull Object object) {
